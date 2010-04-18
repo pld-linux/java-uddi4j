@@ -3,12 +3,6 @@
 %bcond_without	javadoc		# don't build javadoc
 %bcond_without	tests		# don't build and run tests
 
-%if "%{pld_release}" == "ti"
-%bcond_without	java_sun	# build with gcj
-%else
-%bcond_with	java_sun	# build with java-sun
-%endif
-
 %define		srcname		uddi4j
 %include	/usr/lib/rpm/macros.java
 Summary:	API to interact with a UDDI registry
@@ -17,18 +11,16 @@ Version:	2.0.5
 Release:	0.1
 License:	IBM Public License
 Group:		Libraries/Java
-Source0:	http://dl.sourceforge.net/uddi4j/%{srcname}-src-%{version}.zip
+Source0:	http://downloads.sourceforge.net/uddi4j/%{srcname}-src-%{version}.zip
 # Source0-md5:	cd358e19acb9b3a4197fce7481c0cce1
 URL:		http://uddi4j.sourceforge.net/
 %if %(locale -a | grep -q '^en_US$'; echo $?)
 BuildRequires:	glibc-localedb-all
 %endif
 BuildRequires:	java-axis
-%{!?with_java_sun:BuildRequires:	java-gcj-compat-devel}
-%{?with_java_sun:BuildRequires:	java-sun}
 BuildRequires:	java-xerces
+BuildRequires:	jdk
 BuildRequires:	jpackage-utils
-BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	java-axis
