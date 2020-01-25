@@ -4,7 +4,6 @@
 %bcond_without	tests		# don't build and run tests
 
 %define		srcname		uddi4j
-%include	/usr/lib/rpm/macros.java
 Summary:	API to interact with a UDDI registry
 Name:		java-%{srcname}
 Version:	2.0.5
